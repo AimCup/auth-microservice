@@ -2,8 +2,8 @@ eureka:
   client:
     enabled: false
 server:
-  servlet:
-    context-path: /example-path
+#  servlet:
+#    context-path: /auth
   port: 8080
 spring:
   application:
@@ -27,3 +27,26 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: validate
+  security:
+    oauth2:
+      client:
+        registration:
+          osu:
+            clientId: 9552
+            clientSecret: md6Y4UwjAwTJ3VQAbfwUnzxLlZ6JMRY3ivGJaRkt
+            redirectUri: "http://localhost:8080/login/oauth2/code/osu"
+            authorizationGrantType: authorization_code
+            scope:
+              - identify
+              - public
+        provider:
+          osu:
+            authorizationUri: https://osu.ppy.sh/oauth/authorize
+            tokenUri: https://osu.ppy.sh/oauth/token
+            userInfoUri: https://osu.ppy.sh/api/v2/me
+            userNameAttribute: id
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8888/issuer
