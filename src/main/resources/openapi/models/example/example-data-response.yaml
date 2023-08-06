@@ -1,0 +1,8 @@
+ExampleDataResponse:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    data:
+      type: string

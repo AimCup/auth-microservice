@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  example-microservice:
+    build:
+      context: ../..
+      dockerfile: docker/prd/prd-build-deploy.Dockerfile
+    ports:
+      - "8101:8101"
+    environment:
+      - EXAMPLE_DB_PRD_PASSWORD=${POSTGRES_PASSWORD}
+
+networks:
+  default:
+    external: true
+    name: aimcup-network

@@ -1,0 +1,30 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.18.0.1:8761/eureka
+server:
+  servlet:
+    context-path: /example-path
+  port: 8101
+spring:
+  application:
+    name: example-microservice
+  datasource:
+    url: jdbc:postgresql://172.18.0.1:5401/example-db-name
+    username: example-db-username
+    password: ${EXAMPLE_DB_PRD_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 10000
+      maximum-pool-size: 10
+      idle-timeout: 5000
+      max-lifetime: 1000
+      auto-commit: true
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
