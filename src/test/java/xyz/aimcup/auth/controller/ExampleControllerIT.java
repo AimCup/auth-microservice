@@ -1,4 +1,4 @@
-package xyz.aimcup.example.controller;
+package xyz.aimcup.auth.controller;
 
 
 import org.junit.jupiter.api.Test;
@@ -7,7 +7,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.aimcup.generated.model.ExampleDataRequest;
 import xyz.aimcup.generated.model.ExampleDataResponse;
-import xyz.aimcup.example.reusablecontainers.DatabaseContainerIT;
+import xyz.aimcup.auth.reusablecontainers.DatabaseContainerIT;
 
 import java.util.List;
 

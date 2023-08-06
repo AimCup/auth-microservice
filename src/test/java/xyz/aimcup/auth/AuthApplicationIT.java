@@ -1,11 +1,11 @@
-package xyz.aimcup.example;
+package xyz.aimcup.auth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import xyz.aimcup.example.reusablecontainers.DatabaseContainerIT;
+import xyz.aimcup.auth.reusablecontainers.DatabaseContainerIT;
 
 @SpringBootTest
-class ExampleApplicationIT extends DatabaseContainerIT {
+class AuthApplicationIT extends DatabaseContainerIT {
 
     @Test
     @SuppressWarnings("squid:S2699")

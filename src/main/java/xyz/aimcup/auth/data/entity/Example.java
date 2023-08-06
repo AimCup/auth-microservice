@@ -1,4 +1,4 @@
-package xyz.aimcup.example.data.entity;
+package xyz.aimcup.auth.data.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

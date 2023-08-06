@@ -1,8 +1,8 @@
-package xyz.aimcup.example.mapper.example;
+package xyz.aimcup.auth.mapper.example;
 
 import org.mapstruct.Mapper;
 import xyz.aimcup.generated.model.ExampleDataResponse;
-import xyz.aimcup.example.data.entity.Example;
+import xyz.aimcup.auth.data.entity.Example;
 
 import java.util.List;
 

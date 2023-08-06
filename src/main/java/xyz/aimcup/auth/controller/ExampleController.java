@@ -1,4 +1,4 @@
-package xyz.aimcup.example.controller;
+package xyz.aimcup.auth.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 import xyz.aimcup.generated.ExamplesApi;
 import xyz.aimcup.generated.model.ExampleDataRequest;
 import xyz.aimcup.generated.model.ExampleDataResponse;
-import xyz.aimcup.example.data.entity.Example;
-import xyz.aimcup.example.data.repository.ExampleRepostiory;
-import xyz.aimcup.example.mapper.example.ExampleMapper;
+import xyz.aimcup.auth.data.entity.Example;
+import xyz.aimcup.auth.data.repository.ExampleRepostiory;
+import xyz.aimcup.auth.mapper.example.ExampleMapper;
 
 import java.util.List;
 

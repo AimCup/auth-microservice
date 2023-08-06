@@ -17,9 +17,9 @@ jobs:
         run: |
           docker-compose -f docker/stg/stg-run-database-job.yml up -d --build
         env:
-          POSTGRES_PASSWORD: ${{ secrets.EXAMPLE_DB_STG_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.AUTH_DB_STG_PASSWORD }}
       - name: Build and deploy the Docker image
         run: |
           docker-compose -f docker/stg/stg-build-deploy-job.yml up -d --build
         env:
-          POSTGRES_PASSWORD: ${{ secrets.EXAMPLE_DB_STG_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.AUTH_DB_STG_PASSWORD }}

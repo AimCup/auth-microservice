@@ -4,12 +4,12 @@ eureka:
 server:
   servlet:
     context-path: /example-path
-  port: 0
+  port: 8080
 spring:
   application:
-    name: example-microservice
+    name: auth-microservice
   datasource:
-    url: jdbc:postgresql://localhost:5455/example-db-name
+    url: jdbc:postgresql://localhost:5432/auth
     username: testUser
     password: testPassword
     driver-class-name: org.postgresql.Driver

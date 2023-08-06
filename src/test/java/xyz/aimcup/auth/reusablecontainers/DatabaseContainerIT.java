@@ -1,4 +1,4 @@
-package xyz.aimcup.example.reusablecontainers;
+package xyz.aimcup.auth.reusablecontainers;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
