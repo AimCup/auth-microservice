@@ -205,6 +205,9 @@
                                 <delegatePattern>false</delegatePattern>
                                 <useJakartaEe>true</useJakartaEe>
                             </configOptions>
+                            <importMappings>
+                                <importMapping>UserPrincipal=xyz.aimcup.auth.security.UserPrincipal</importMapping>
+                            </importMappings>
                         </configuration>
                     </execution>
                 </executions>

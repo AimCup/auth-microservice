@@ -1,0 +1,14 @@
+get:
+  tags:
+    - User
+  summary: Get user by JWT token
+  operationId: get-user
+  security:
+    - bearerAuth: [ ]
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../../models/user/user-response.yaml#/UserResponseDTO'

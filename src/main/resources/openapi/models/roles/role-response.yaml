@@ -1,8 +1,8 @@
-ExampleDataResponse:
+RoleResponseDTO:
   type: object
   properties:
     id:
       type: string
       format: uuid
-    data:
+    name:
       type: string
