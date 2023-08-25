@@ -1,6 +1,5 @@
 package xyz.aimcup.auth.security;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class OAuth2AuthenticationSuccessHandler
   @Override
   protected String determineTargetUrl(
       HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-    String targetUrl = getTargetUrlParameter();
+    String targetUrl = super.determineTargetUrl(request,response);
     String token = tokenProvider.createToken(authentication);
 
     return UriComponentsBuilder.fromUriString(targetUrl)
