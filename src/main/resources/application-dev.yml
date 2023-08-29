@@ -2,8 +2,8 @@ eureka:
   client:
     enabled: false
 server:
-#  servlet:
-#    context-path: /auth
+  servlet:
+    context-path: /user
   port: 8080
 spring:
   application:
@@ -36,7 +36,7 @@ spring:
           osu:
             clientId: 9552
             clientSecret: md6Y4UwjAwTJ3VQAbfwUnzxLlZ6JMRY3ivGJaRkt
-            redirectUri: "http://localhost:8080/login/oauth2/code/osu"
+            redirectUri: "http://localhost:8080/user/login/oauth2/code/osu"
             authorizationGrantType: authorization_code
             scope:
               - identify
@@ -47,6 +47,3 @@ spring:
             tokenUri: https://osu.ppy.sh/oauth/token
             userInfoUri: https://osu.ppy.sh/api/v2/me
             userNameAttribute: id
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8888/issuer

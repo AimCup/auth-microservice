@@ -16,6 +16,7 @@ import java.util.Collections;
 @Service
 @RequiredArgsConstructor
 public class OAuth2UserService extends DefaultOAuth2UserService {
+
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
@@ -25,11 +26,11 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         return processOAuth2User(userRequest, oAuth2User);
     }
 
-    private OAuth2User processOAuth2User(OAuth2UserRequest oAuth2UserRequest, OAuth2User oAuth2User) {
+    private OAuth2User processOAuth2User(OAuth2UserRequest oAuth2UserRequest,
+        OAuth2User oAuth2User) {
         OAuth2UserInfo oAuth2UserInfo = new OsuOAuth2UserInfo(oAuth2User.getAttributes());
-        var user = userRepository.findByOsuId(oAuth2UserInfo.getOsuId())
-                .map(this::updateUser)
-                .orElseGet(() -> registerUser(oAuth2UserInfo));
+        var user = userRepository.findByOsuId(oAuth2UserInfo.getOsuId()).map(this::updateUser)
+            .orElseGet(() -> registerUser(oAuth2UserInfo));
         return UserPrincipal.create(user, oAuth2User.getAttributes());
     }
 
@@ -39,13 +40,10 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
 
     private User registerUser(OAuth2UserInfo oAuth2UserInfo) {
         var userRole = roleRepository.findByName(RoleName.ROLE_USER)
-                .orElseThrow(() -> new RuntimeException("User Role not set."));
-        var user = User.builder()
-                .osuId(oAuth2UserInfo.getOsuId())
-                .username(oAuth2UserInfo.getUsername())
-                .isRestricted(oAuth2UserInfo.isRestricted())
-                .roles(Collections.singleton(userRole))
-                .build();
+            .orElseThrow(() -> new RuntimeException("User Role not set."));
+        var user = User.builder().osuId(oAuth2UserInfo.getOsuId())
+            .username(oAuth2UserInfo.getUsername()).isRestricted(oAuth2UserInfo.isRestricted())
+            .roles(Collections.singleton(userRole)).build();
         return userRepository.save(user);
     }
 }
