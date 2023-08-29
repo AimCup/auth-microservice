@@ -28,6 +28,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: validate
   security:
     oauth2:
       client:
