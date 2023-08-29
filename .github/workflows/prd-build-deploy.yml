@@ -14,9 +14,9 @@ jobs:
         run: |
           docker-compose -f docker/prd/prd-run-database-job.yml up -d --build
         env:
-          POSTGRES_PASSWORD: ${{ secrets.AUTH_DB_PRD_PASSWORD }}"
+          POSTGRES_PASSWORD: ${{ secrets.USER_DB_STG_PASSWORD }}"
       - name: Build and deploy the Docker image
         run: |
           docker-compose -f docker/prd/prd-build-deploy-job.yml up -d --build
         env:
-          POSTGRES_PASSWORD: ${{ secrets.AUTH_DB_PRD_PASSWORD }}"
+          POSTGRES_PASSWORD: ${{ secrets.USER_DB_STG_PASSWORD }}"
