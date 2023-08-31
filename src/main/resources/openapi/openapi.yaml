@@ -11,5 +11,5 @@ tags:
     description: Sample-OpenApi
 
 paths:
-  /examples:
-    $ref: './paths/example/example.yaml'
+  /user:
+    $ref: './paths/user/user.yaml'

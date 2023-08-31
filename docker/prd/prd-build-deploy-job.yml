@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  example-microservice:
+  auth-microservice:
     build:
       context: ../..
       dockerfile: docker/prd/prd-build-deploy.Dockerfile
     ports:
-      - "8101:8101"
+      - "8501:8501"
     environment:
       - EXAMPLE_DB_PRD_PASSWORD=${POSTGRES_PASSWORD}
 

@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  example-microservice:
+  auth-microservice:
     build:
       context: ../..
       dockerfile: docker/stg/stg-build-deploy.Dockerfile
     ports:
-      - "8201:8201"
+      - "8502:8502"
     environment:
       - EXAMPLE_DB_STG_PASSWORD=${POSTGRES_PASSWORD}
 

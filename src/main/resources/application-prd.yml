@@ -4,15 +4,15 @@ eureka:
       defaultZone: http://172.18.0.1:8761/eureka
 server:
   servlet:
-    context-path: /example-path
-  port: 8101
+    context-path: /user
+  port: 8501
 spring:
   application:
-    name: example-microservice
+    name: user-microservice
   datasource:
-    url: jdbc:postgresql://172.18.0.1:5401/example-db-name
-    username: example-db-username
-    password: ${EXAMPLE_DB_PRD_PASSWORD}
+    url: jdbc:postgresql://172.18.0.1:5701/auth
+    username: user
+    password: ${USER_DB_STG_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 10000
@@ -28,3 +28,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
