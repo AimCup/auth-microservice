@@ -25,3 +25,21 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      client:
+        registration:
+          osu:
+            clientId: 24331
+            clientSecret: lwMOhyx28qc7EayzzkTZ7tKwaUe66SxXTqtE9VkT
+            redirectUri: "https://api-stg.aimcup.xyz/user/login/oauth2/code/osu"
+            authorizationGrantType: authorization_code
+            scope:
+              - identify
+              - public
+        provider:
+          osu:
+            authorizationUri: https://osu.ppy.sh/oauth/authorize
+            tokenUri: https://osu.ppy.sh/oauth/token
+            userInfoUri: https://osu.ppy.sh/api/v2/me
+            userNameAttribute: id
