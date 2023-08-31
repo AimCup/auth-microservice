@@ -8,7 +8,7 @@ services:
     ports:
       - "8502:8502"
     environment:
-      - EXAMPLE_DB_STG_PASSWORD=${POSTGRES_PASSWORD}
+      - USER_DB_STG_PASSWORD=${POSTGRES_PASSWORD}
 
 
 networks:
