@@ -1,15 +1,16 @@
 package xyz.aimcup.auth.security;
 
+import java.math.BigDecimal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import xyz.aimcup.auth.data.entity.User;
 
 import java.util.Collection;
 import java.util.Map;
+import xyz.aimcup.security.domain.User;
 
 @Builder
 @Getter

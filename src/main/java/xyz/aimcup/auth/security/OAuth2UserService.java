@@ -6,12 +6,12 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-import xyz.aimcup.auth.data.entity.RoleName;
-import xyz.aimcup.auth.data.entity.User;
 import xyz.aimcup.auth.data.repository.RoleRepository;
 import xyz.aimcup.auth.data.repository.UserRepository;
 
 import java.util.Collections;
+import xyz.aimcup.security.domain.RoleName;
+import xyz.aimcup.security.domain.User;
 
 @Service
 @RequiredArgsConstructor
@@ -41,9 +41,12 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
     private User registerUser(OAuth2UserInfo oAuth2UserInfo) {
         var userRole = roleRepository.findByName(RoleName.ROLE_USER)
             .orElseThrow(() -> new RuntimeException("User Role not set."));
-        var user = User.builder().osuId(oAuth2UserInfo.getOsuId())
-            .username(oAuth2UserInfo.getUsername()).isRestricted(oAuth2UserInfo.isRestricted())
-            .roles(Collections.singleton(userRole)).build();
+        var user = User.builder()
+            .osuId(oAuth2UserInfo.getOsuId())
+            .username(oAuth2UserInfo.getUsername())
+            .isRestricted(oAuth2UserInfo.isRestricted())
+            .roles(Collections.singleton(userRole))
+            .build();
         return userRepository.save(user);
     }
 }
