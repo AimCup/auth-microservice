@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import xyz.aimcup.auth.data.repository.UserRepository;
+import xyz.aimcup.security.principal.UserPrincipal;
 
 @Service
 @RequiredArgsConstructor

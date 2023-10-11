@@ -1,6 +1,5 @@
 package xyz.aimcup.auth.configuration;
 
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,14 +10,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import xyz.aimcup.auth.security.CustomUserDetailsService;
 import xyz.aimcup.auth.security.OAuth2AuthenticationSuccessHandler;
 import xyz.aimcup.auth.security.OAuth2UserService;
-import xyz.aimcup.auth.security.TokenAuthenticationFilter;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +27,6 @@ public class SecurityConfiguration {
     private final OAuth2UserService oAuth2UserService;
     private final CustomUserDetailsService customUserDetailsService;
     private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
-    private final TokenAuthenticationFilter tokenAuthenticationFilter;
 //    private final HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
     @Bean
@@ -49,7 +47,6 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(auth -> {
                 auth.requestMatchers("/secured").authenticated().anyRequest().permitAll();
             })
-            .addFilterBefore(tokenAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .oauth2Login(oauth2 -> oauth2.userInfoEndpoint(userInfo -> {
                     // save user to database after successful login
                     userInfo.userService(oAuth2UserService);

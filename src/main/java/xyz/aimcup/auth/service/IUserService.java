@@ -1,7 +1,7 @@
 package xyz.aimcup.auth.service;
 
-import xyz.aimcup.auth.security.UserPrincipal;
 import xyz.aimcup.security.domain.User;
+import xyz.aimcup.security.principal.UserPrincipal;
 
 public interface IUserService {
     User getUserFromPrincipal(UserPrincipal userPrincipal);

@@ -12,6 +12,7 @@ import xyz.aimcup.auth.data.repository.UserRepository;
 import java.util.Collections;
 import xyz.aimcup.security.domain.RoleName;
 import xyz.aimcup.security.domain.User;
+import xyz.aimcup.security.principal.UserPrincipal;
 
 @Service
 @RequiredArgsConstructor

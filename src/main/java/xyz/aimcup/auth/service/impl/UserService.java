@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import xyz.aimcup.auth.data.repository.UserRepository;
 import xyz.aimcup.auth.security.TokenProvider;
-import xyz.aimcup.auth.security.UserPrincipal;
 import xyz.aimcup.auth.service.IUserService;
 import xyz.aimcup.security.domain.User;
+import xyz.aimcup.security.principal.UserPrincipal;
 
 @Service
 @RequiredArgsConstructor
