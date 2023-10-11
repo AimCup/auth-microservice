@@ -16,6 +16,12 @@
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
+    <repositories>
+        <repository>
+            <id>github-organization</id>
+            <url>https://maven.pkg.github.com/aimcup</url>
+        </repository>
+    </repositories>
     <dependencies>
 
         <!--SpringBoot dependencies-->
@@ -115,7 +121,8 @@
         <dependency>
             <groupId>xyz.aimcup</groupId>
             <artifactId>security-config</artifactId>
-            <version>0.0.10-TEST</version>
+            <version>0.1.0</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -237,7 +244,9 @@
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
                                 <useTags>true</useTags>
-                                <additionalModelTypeAnnotations>@lombok.NoArgsConstructor @lombok.Builder @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
+                                <additionalModelTypeAnnotations>@lombok.NoArgsConstructor @lombok.Builder
+                                    @lombok.AllArgsConstructor
+                                </additionalModelTypeAnnotations>
                                 <skipDefaultInterface>true</skipDefaultInterface>
                                 <interfaceOnly>true</interfaceOnly>
                                 <delegatePattern>false</delegatePattern>
@@ -272,5 +281,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
