@@ -1,4 +1,4 @@
-package xyz.aimcup.auth.mapper.example;
+package xyz.aimcup.auth.mapper.user;
 
 import org.mapstruct.Mapper;
 import xyz.aimcup.generated.model.UserResponseDTO;
