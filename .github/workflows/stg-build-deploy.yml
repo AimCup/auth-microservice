@@ -12,6 +12,15 @@ jobs:
     runs-on:
       group: Default
     steps:
+      - name: Setup Maven settings
+        uses: s4u/maven-settings-action@v2.8.0
+        with:
+          servers: |
+            [{
+                "id": "github",
+                "username": "${{ secrets.SETTINGS_XML_USERNAME }}",
+                "password": "${{ secrets.SETTINGS_XML_TOKEN }}"
+            }]
       - uses: actions/checkout@v3
       - name: Run microservice db (if needed)
         run: |
