@@ -9,6 +9,7 @@ jobs:
     runs-on:
       group: Default
     steps:
+      - uses: actions/checkout@v3
       - name: Setup Maven settings
         uses: s4u/maven-settings-action@v2.8.0
         with:
@@ -18,7 +19,6 @@ jobs:
                 "username": "${{ secrets.SETTINGS_XML_USERNAME }}",
                 "password": "${{ secrets.SETTINGS_XML_TOKEN }}"
             }]
-      - uses: actions/checkout@v3
       - name: Run microservice db (if needed)
         run: |
           docker-compose -f docker/prd/prd-run-database-job.yml up -d --build
