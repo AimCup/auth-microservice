@@ -10,3 +10,5 @@ info:
 paths:
   /me:
     $ref: './paths/user/user.yaml'
+  /{osuId}:
+    $ref: './paths/user/user-by-osu-id.yaml'

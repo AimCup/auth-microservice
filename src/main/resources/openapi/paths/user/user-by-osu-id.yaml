@@ -1,9 +1,15 @@
 get:
   tags:
     - User
-  summary: Get user by JWT token
-  operationId: me
-  description: Get user by JWT token
+  summary: Get user by osu! ID
+  operationId: get-user-by-osu-id
+  parameters:
+    - name: osuId
+      in: path
+      required: true
+      schema:
+        type: string
+        description: osu! ID
   responses:
     '200':
       description: OK

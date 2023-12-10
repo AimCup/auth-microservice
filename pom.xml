@@ -16,12 +16,6 @@
         <java.version>17</java.version>
         <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
-    <repositories>
-        <repository>
-            <id>github-organization</id>
-            <url>https://maven.pkg.github.com/aimcup</url>
-        </repository>
-    </repositories>
     <dependencies>
 
         <!--SpringBoot dependencies-->
@@ -86,6 +80,29 @@
             <version>2.2.0</version>
         </dependency>
 
+        <!--Keycloak admin CLI-->
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-admin-client</artifactId>
+            <version>22.0.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss</groupId>
+                    <artifactId>jandex</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-adapter-core</artifactId>
+            <version>22.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-common</artifactId>
+            <version>22.0.5</version>
+        </dependency>
+
         <!--Other dependencies-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -97,7 +114,10 @@
             <artifactId>mapstruct</artifactId>
             <version>1.5.5.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 
         <!--Test dependencies-->
         <dependency>
@@ -116,13 +136,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>xyz.aimcup</groupId>
-            <artifactId>security-config</artifactId>
-            <version>0.1.1</version>
-            <scope>provided</scope>
         </dependency>
 
     </dependencies>
