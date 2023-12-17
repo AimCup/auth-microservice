@@ -1,0 +1,2 @@
+# user-microservice
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6929f7eb7404473ab7f4664a87a9a189)](https://app.codacy.com/gh/AimCup/user-microservice?utm_source=github.com&utm_medium=referral&utm_content=AimCup/user-microservice&utm_campaign=Badge_Grade)
