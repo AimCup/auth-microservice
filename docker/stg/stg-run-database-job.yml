@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  db-auth-microservice:
+  stg-db-user-microservice:
     image: postgres:15.1
     restart: always
     environment:
