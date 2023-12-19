@@ -32,19 +32,32 @@ spring:
           auto: validate
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/certs
       client:
-        registration:
-          osu:
-            clientId: 24331
-            clientSecret: lwMOhyx28qc7EayzzkTZ7tKwaUe66SxXTqtE9VkT
-            redirectUri: "https://api-stg.aimcup.xyz/user/login/oauth2/code/osu"
-            authorizationGrantType: authorization_code
-            scope:
-              - identify
-              - public
         provider:
-          osu:
-            authorizationUri: https://osu.ppy.sh/oauth/authorize
-            tokenUri: https://osu.ppy.sh/oauth/token
-            userInfoUri: https://osu.ppy.sh/api/v2/me
-            userNameAttribute: id
+          aimcup:
+            issuer-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm
+        registration:
+          aimcup:
+            provider: aimcup
+            client-name: aimcup
+            client-id: aimcup
+            client-secret: MUSDaD5wr0p06E8rwlVXkteKagnr29lU
+            scope: profile,openid,offline_access
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+  main:
+    allow-bean-definition-overriding: true
+
+aimcup:
+  keycloak:
+    serverUrl: https://keycloak-stg.aimcup.xyz
+    realm: aimcup-realm
+    clientId: ac-management
+    clientSecret: msZLKuDHgERVggrmZA33xcm2yoqkcYqI
+
+osu:
+  api:
+    clientId: 9552
+    clientSecret: md6Y4UwjAwTJ3VQAbfwUnzxLlZ6JMRY3ivGJaRkt
