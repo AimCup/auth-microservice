@@ -22,6 +22,7 @@ public class SecurityConfiguration {
         httpSecurity
                 .sessionManagement(Customizer.withDefaults());
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.oauth2ResourceServer(auth -> auth.jwt(Customizer.withDefaults()));
         return httpSecurity.build();
     }
 }
