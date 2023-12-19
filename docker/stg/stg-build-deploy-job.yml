@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  auth-microservice:
+  tournament-microservice:
     build:
       context: ../..
       dockerfile: docker/stg/stg-build-deploy.Dockerfile
