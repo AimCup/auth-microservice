@@ -15,6 +15,8 @@ import xyz.aimcup.auth.data.entity.User;
 import xyz.aimcup.auth.feign.osu.OsuClient;
 import xyz.aimcup.auth.feign.osu.model.OsuUserExtended;
 import xyz.aimcup.auth.mapper.user.UserMapper;
+import xyz.aimcup.auth.properties.AimCupProperties;
+import xyz.aimcup.auth.properties.KeycloakProperties;
 import xyz.aimcup.auth.service.KeycloakService;
 
 import java.util.List;
@@ -40,6 +42,9 @@ class UserServiceImplTest {
     @MockBean
     private UserMapper userMapper;
 
+    @MockBean
+    private AimCupProperties aimCupProperties;
+
     @Autowired
     private UserServiceImpl userService;
 
@@ -55,6 +60,7 @@ class UserServiceImplTest {
         final Keycloak keycloak = mock(Keycloak.class);
         RealmResource resource = mock(RealmResource.class);
         UsersResource usersResource = mock(UsersResource.class);
+        KeycloakProperties keycloakProperties = mock(KeycloakProperties.class);
 
         final User user = User.builder()
                 .id(UUID.randomUUID())
@@ -62,6 +68,8 @@ class UserServiceImplTest {
                 .build();
 
         // when
+        when(aimCupProperties.getKeycloak()).thenReturn(keycloakProperties);
+        when(keycloakProperties.getRealm()).thenReturn("aimcup_realm");
         when(keycloakService.getKeycloak()).thenReturn(keycloak);
         when(keycloak.realm("aimcup_realm")).thenReturn(resource);
         when(resource.users()).thenReturn(usersResource);
@@ -87,6 +95,7 @@ class UserServiceImplTest {
         RealmResource resource = mock(RealmResource.class);
         UsersResource usersResource = mock(UsersResource.class);
         OsuUserExtended osuUserExtended = mock(OsuUserExtended.class);
+        KeycloakProperties keycloakProperties = mock(KeycloakProperties.class);
 
         final User user = User.builder()
                 .id(UUID.randomUUID())
@@ -94,6 +103,8 @@ class UserServiceImplTest {
                 .build();
 
         // when
+        when(aimCupProperties.getKeycloak()).thenReturn(keycloakProperties);
+        when(keycloakProperties.getRealm()).thenReturn("aimcup_realm");
         when(keycloakService.getKeycloak()).thenReturn(keycloak);
         when(keycloak.realm("aimcup_realm")).thenReturn(resource);
         when(resource.users()).thenReturn(usersResource);
