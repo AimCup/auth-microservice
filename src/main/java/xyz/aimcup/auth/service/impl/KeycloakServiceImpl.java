@@ -49,7 +49,11 @@ public class KeycloakServiceImpl implements KeycloakService {
     @Override
     public UUID createUser(UserRepresentation userRepresentation) {
         KeycloakProperties keycloakProperties = aimCupProperties.getKeycloak();
-        try (Response response = this.getKeycloak().realm(keycloakProperties.getRealm()).users().create(userRepresentation)) {
+        try (Response response =
+                     this.getKeycloak()
+                             .realm(keycloakProperties.getRealm())
+                             .users()
+                             .create(userRepresentation)) {
             return UUID.fromString(response.getLocation().getPath().replaceAll(".*/([^/]+)$", "$1"));
         }
     }
