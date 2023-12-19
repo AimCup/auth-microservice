@@ -46,8 +46,6 @@ public class KeycloakServiceImpl implements KeycloakService {
         UserRepresentation userRepresentation = new UserRepresentation();
         userRepresentation.setUsername(osuUser.getId().toString());
         userRepresentation.setEnabled(true);
-
-        // attributes
         Map<String, List<String>> attributes = new HashMap<>();
         attributes.put("username", List.of(osuUser.getUsername()));
         userRepresentation.setAttributes(attributes);
