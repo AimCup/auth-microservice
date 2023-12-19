@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  tournament-microservice:
+  user-microservice:
     build:
       context: ../..
       dockerfile: docker/stg/stg-build-deploy.Dockerfile
@@ -9,7 +9,6 @@ services:
       - "8502:8502"
     environment:
       - USER_DB_STG_PASSWORD=${POSTGRES_PASSWORD}
-
 
 networks:
   default:
