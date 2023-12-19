@@ -178,35 +178,16 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>xyz/aimcup/generated/**/*</exclude>
-                        <exclude>xyz/aimcup/*/data/**/*</exclude>
-                        <exclude>xyz/aimcup/*/mapper/**/*</exclude>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
                     </excludes>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>before-integration-test-execution</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <configuration>
-                            <propertyName>failsafe.jacoco.args</propertyName>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>after-integration-test-execution</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -280,9 +261,6 @@
                                 <delegatePattern>false</delegatePattern>
                                 <useJakartaEe>true</useJakartaEe>
                             </configOptions>
-                            <importMappings>
-                                <importMapping>UserPrincipal=xyz.aimcup.auth.security.UserPrincipal</importMapping>
-                            </importMappings>
                         </configuration>
                     </execution>
                 </executions>
