@@ -5,7 +5,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class OsuAccessTokenPojo {
+public class OsuAccessToken {
 
     private String clientId;
 
