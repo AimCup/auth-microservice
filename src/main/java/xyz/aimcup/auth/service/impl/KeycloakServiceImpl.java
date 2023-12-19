@@ -6,9 +6,10 @@ import org.keycloak.OAuth2Constants;
 import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
 import org.keycloak.representations.idm.UserRepresentation;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import xyz.aimcup.auth.feign.osu.model.OsuUser;
+import xyz.aimcup.auth.properties.AimCupProperties;
+import xyz.aimcup.auth.properties.KeycloakProperties;
 import xyz.aimcup.auth.service.KeycloakService;
 
 import java.util.HashMap;
@@ -19,25 +20,16 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class KeycloakServiceImpl implements KeycloakService {
-    @Value("${aimcup.keycloak.serverUrl}")
-    private String serverUrl;
-
-    @Value("${aimcup.keycloak.realm}")
-    private String realm;
-
-    @Value("${aimcup.keycloak.clientId}")
-    private String clientId;
-
-    @Value("${aimcup.keycloak.clientSecret}")
-    private String clientSecret;
+    private final AimCupProperties aimCupProperties;
 
     public Keycloak getKeycloak() {
+        KeycloakProperties keycloakProperties = aimCupProperties.getKeycloak();
         return KeycloakBuilder.builder()
-                .serverUrl(serverUrl)
+                .serverUrl(keycloakProperties.getServerUrl())
                 .grantType(OAuth2Constants.CLIENT_CREDENTIALS)
-                .realm(realm)
-                .clientId(clientId)
-                .clientSecret(clientSecret)
+                .realm(keycloakProperties.getRealm())
+                .clientId(keycloakProperties.getClientId())
+                .clientSecret(keycloakProperties.getClientSecret())
                 .build();
     }
 
@@ -56,7 +48,8 @@ public class KeycloakServiceImpl implements KeycloakService {
 
     @Override
     public UUID createUser(UserRepresentation userRepresentation) {
-        try (Response response = this.getKeycloak().realm(realm).users().create(userRepresentation)) {
+        KeycloakProperties keycloakProperties = aimCupProperties.getKeycloak();
+        try (Response response = this.getKeycloak().realm(keycloakProperties.getRealm()).users().create(userRepresentation)) {
             return UUID.fromString(response.getLocation().getPath().replaceAll(".*/([^/]+)$", "$1"));
         }
     }

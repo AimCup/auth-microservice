@@ -1,6 +1,1 @@
 spring.profiles.active: @spring.profiles.active@
-
-osu:
-  api:
-    clientId: ${OSU_API_CLIENT_ID}
-    clientSecret: ${OSU_API_CLIENT_SECRET}

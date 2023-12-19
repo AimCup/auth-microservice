@@ -31,6 +31,9 @@ spring:
           auto: validate
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://keycloak-stg.aimcup.xyz/realms/aimcup-realm/protocol/openid-connect/certs
       client:
         provider:
           aimcup:
@@ -53,8 +56,7 @@ aimcup:
     clientId: ac-management
     clientSecret: msZLKuDHgERVggrmZA33xcm2yoqkcYqI
 
-logging:
-  level:
-    org:
-      springframework:
-        security: DEBUG
+osu:
+  api:
+    clientId: 9552
+    clientSecret: md6Y4UwjAwTJ3VQAbfwUnzxLlZ6JMRY3ivGJaRkt
