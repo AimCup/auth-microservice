@@ -6,6 +6,7 @@ server:
   servlet:
     context-path: /user
   port: 8502
+  forward-headers-strategy: native
 spring:
   application:
     name: user-microservice
