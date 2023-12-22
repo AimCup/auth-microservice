@@ -9,7 +9,7 @@ spring:
   application:
     name: user-microservice
   datasource:
-    url: jdbc:postgresql://localhost:5432/auth
+    url: jdbc:postgresql://localhost:5432/user
     username: testUser
     password: testPassword
     driver-class-name: org.postgresql.Driver

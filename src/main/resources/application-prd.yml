@@ -1,7 +1,7 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://172.18.0.1:8761/eureka
+      defaultZone: http://${EUREKA_PRD}/eureka
 server:
   servlet:
     context-path: /user
@@ -10,9 +10,9 @@ spring:
   application:
     name: user-microservice
   datasource:
-    url: jdbc:postgresql://172.18.0.1:5701/auth
-    username: user
-    password: ${USER_DB_PRD_PASSWORD}
+    url: jdbc:postgresql://${DB_PRD_ADDRESS}/user
+    username: ${DB_PRD_USER}
+    password: ${DB_PRD_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 10000
@@ -28,6 +28,23 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      client:
+        provider:
+          aimcup:
+            issuer-uri: ${PRD_KEYCLOAK_ISSUER_ID}
+        registration:
+          aimcup:
+            provider: aimcup
+            client-name: ${PRD_KEYCLOAK_CLIENT_NAME}
+            client-id: ${PRD_KEYCLOAK_CLIENT_ID}
+            client-secret: ${PRD_KEYCLOAK_CLIENT_SECRET}
+            scope: profile,openid,offline_access
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${PRD_KEYCLOAK_JWK_SET_URI}
 springdoc:
   api-docs:
     enabled: false
