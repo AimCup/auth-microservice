@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: ${DB_PRD_PASSWORD}
       POSTGRES_DB: user
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      test: [ "CMD-SHELL", "pg_isready -U $$DB_PRD_USER user" ]
       interval: 5s
       timeout: 5s
       retries: 5
